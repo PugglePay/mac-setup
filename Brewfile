@@ -1,3 +1,4 @@
+install git
 install rbenv
 install gnutls
 install mysql
