@@ -6,6 +6,7 @@ install brew-cask
 cask install gpgtools
 cask install alfred
 install gpgme
+cask install iterm2
 cask install google-chrome
 cask install firefox
 cask install skype
