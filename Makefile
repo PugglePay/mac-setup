@@ -1,11 +1,9 @@
 all: brew_install brew_bundle rbenv_plugins
 
 brew_install:
-	if [ -e /usr/local/bin/brew ]; \
-	then \
-	  echo "brew already installed, skipping..."; \
-	else \
-	  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; \
+	if [ -s /usr/local/bin/brew ]; \
+	then { echo "brew already installed, skipping..."; } \
+	else { ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; } \
 	fi
 
 brew_bundle:
