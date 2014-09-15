@@ -10,13 +10,24 @@ brew_bundle:
 	brew update
 	brew bundle
 
-rbenv_plugins:
-	if [ -d ~/.rbenv/plugins ]; \
+rbenv_plugins: ruby_build rbenv_gem_rehash
+
+ruby_build:
+	if [ -d ~/.rbenv/plugins/ruby-build ]; \
 	then \
-	  echo "rbenv plugins already present, skipping..."; \
+		echo "ruby-build already present, skipping..."; \
 	else \
-	  mkdir ~/.rbenv/plugins; \
-	  cd ~/.rbenv/plugins; \
-	  git clone https://github.com/sstephenson/rbenv-gem-rehash.git; \
-	  git clone https://github.com/sstephenson/ruby-build.git; \
+		mkdir -p ~/.rbenv/plugins; \
+		cd ~/.rbenv/plugins; \
+		git clone https://github.com/sstephenson/ruby-build.git; \
+	fi
+
+rbenv_gem_rehash:
+	if [ -d ~/.rbenv/plugins/rbenv-gem-rehash ]; \
+	then \
+		echo "rbenv-gem-rehash already present, skipping..."; \
+	else \
+		mkdir -p ~/.rbenv/plugins; \
+		cd ~/.rbenv/plugins; \
+		git clone https://github.com/sstephenson/rbenv-gem-rehash.git; \
 	fi
