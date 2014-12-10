@@ -1,19 +1,24 @@
-all: brew_install brew_bundle rbenv_plugins
+all: install_brew brew_update git_install rbenv brewdler
 
-brew_install:
+install_brew:
 	if [ -s /usr/local/bin/brew ]; \
 	then { echo "brew already installed, skipping..."; } \
 	else { ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; } \
 	fi
 
-brew_bundle:
+brew_update:
 	brew update
-	brew bundle
 
-rbenv_plugins: ruby_build rbenv_gem_rehash
+git_install:
+	brew install git
+
+rbenv: rbenv_install ruby_build rbenv_gem_rehash
+
+rbenv_install:
+	brew install rbenv
 
 ruby_build:
-	if [ -d ~/.rbenv/plugins/ruby-build ]; \
+	@if [ -d ~/.rbenv/plugins/ruby-build ]; \
 	then \
 		echo "ruby-build already present, skipping..."; \
 	else \
@@ -23,7 +28,7 @@ ruby_build:
 	fi
 
 rbenv_gem_rehash:
-	if [ -d ~/.rbenv/plugins/rbenv-gem-rehash ]; \
+	@if [ -d ~/.rbenv/plugins/rbenv-gem-rehash ]; \
 	then \
 		echo "rbenv-gem-rehash already present, skipping..."; \
 	else \
@@ -31,3 +36,7 @@ rbenv_gem_rehash:
 		cd ~/.rbenv/plugins; \
 		git clone https://github.com/sstephenson/rbenv-gem-rehash.git; \
 	fi
+
+brewdler:
+	gem install brewdler
+	brewdle install
