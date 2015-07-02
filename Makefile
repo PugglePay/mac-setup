@@ -3,7 +3,7 @@ all: install_brew brew_update git_install rbenv brewdler
 install_brew:
 	if [ -s /usr/local/bin/brew ]; \
 	then { echo "brew already installed, skipping..."; } \
-	else { ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"; } \
+	else { ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" } \
 	fi
 
 brew_update:
