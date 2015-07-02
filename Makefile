@@ -38,5 +38,5 @@ rbenv_gem_rehash:
 	fi
 
 brewdler:
-	brew tap Hombrew/brewdler
+	brew tap Homebrew/brewdler
 	brewdle install
