@@ -39,4 +39,4 @@ rbenv_gem_rehash:
 
 brewdler:
 	brew tap Homebrew/brewdler
-	brewdle install
+	brew bundle
